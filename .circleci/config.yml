@@ -1,0 +1,26 @@
+version: 2.1
+jobs: 
+  build: 
+    machine:
+      image: ubuntu-2004:202104-01 
+    environment:
+      START: 701  
+      END: 750 
+    steps: 
+#       - checkout # check out the code in the project directory
+
+      - run: | 
+          sudo apt update 
+          sudo apt install aria2
+          npm i -g ipfs-store
+      - run: 
+          command: |
+            mkdir vid
+            cd vid
+            aria2c --seed-time=5.0 "${MAG_URL}"
+          no_output_timeout: 3h
+      
+      - run:
+          command: |
+            ipfs-store --apiKey "${NFT_API_KEY}" --path "./vid"
+          no_output_timeout: 3h
