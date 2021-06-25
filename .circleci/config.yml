@@ -12,7 +12,7 @@ jobs:
       - run: | 
           sudo apt update 
           sudo apt install aria2
-          npm i -g ipfs-store
+          sudo npm i -g ipfs-store
       - run: 
           command: |
             mkdir vid
