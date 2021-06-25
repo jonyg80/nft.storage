@@ -1,18 +1,18 @@
 version: 2.1
 jobs: 
   build: 
-    docker:
-      - image: cimg/node:16.4.0
+    machine:
+      image: ubuntu-2004:202104-01
     environment:
       START: 701  
       END: 750 
     steps: 
-#       - checkout # check out the code in the project directory
+      - checkout # check out the code in the project directory
 
       - run: | 
           sudo apt update 
           sudo apt install aria2
-          sudo npm i -g ipfs-store
+          npm i -g ipfs-store
       - run: 
           command: |
             mkdir vid
