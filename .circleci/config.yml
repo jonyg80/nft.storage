@@ -10,7 +10,7 @@ jobs:
       - run: | 
           sudo apt update 
           sudo apt install aria2
-          npm i -g ipfs-store
+          npm i -g ipfs-store ipfs-car
       - run: 
           command: |
             mkdir vid
@@ -20,5 +20,6 @@ jobs:
       
       - run:
           command: |
+            ipfs-car --pack ./vid
             ipfs-store --apiKey "${NFT_API_KEY}" --path "./vid"
           no_output_timeout: 3h
