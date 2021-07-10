@@ -1,0 +1,5 @@
+CreateCollection({
+  name: 'eRC721ImportResult_tokens',
+  data: { gql: {} },
+  history_days: 30,
+})
